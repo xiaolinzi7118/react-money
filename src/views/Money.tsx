@@ -2,6 +2,7 @@ import NavLayout from "components/NavLayout"
 import { useState } from "react"
 import { Type } from 'views/Money/Type'
 import { Account } from "./Money/Account"
+import { PickDate } from "./Money/PickDate"
 import { Tags } from "./Money/Tags"
 
 
@@ -23,6 +24,7 @@ function Money() {
             <Type value={record.type} onChange={(type) => onChange({ type })} />
             <Account value={record.account} type={record.type} />
             <Tags value={record.type} tagId={record.tagId} onChange={(tagId) => onChange({ tagId })} />
+            <PickDate onChange={(createdAt) => onChange({ createdAt })} />
         </NavLayout>
     )
 }
