@@ -1,7 +1,5 @@
-import classNames from "classnames"
 import Icon from "components/Icons"
 import { useTagList } from "hooks/useTagsList"
-import { useState } from "react"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
@@ -47,26 +45,22 @@ const Tags: React.FC<Props> = (props) => {
     const { tagList1, tagList2 } = useTagList()
     const type = props.value
     const tagId = props.tagId
-    const [selected, setSelected] = useState(tagId)
-    const onClickChange = (id: string) => {
-        setSelected(id)
-        props.onChange(id)
-    }
+    const getClass = (id: string) => tagId === id ? 'selected' : ''
     return (
         <Wrapper>
             <ul className='tags'>
                 {type === 'out' ?
                     tagList1.map(t =>
-                        <li key={t.id} className={classNames({ 'selected': selected === t.id })}
-                            onClick={() => { onClickChange(t.id) }}
+                        <li key={t.id} className={getClass(t.id)}
+                            onClick={() => props.onChange(t.id)}
                         >
                             <Icon name={t.id} />
                             <div>{t.value}</div>
                         </li>
                     )
                     : tagList2.map(t =>
-                        <li key={t.id} className={classNames({ 'selected': selected === t.id })}
-                            onClick={() => { onClickChange(t.id) }}
+                        <li key={t.id} className={getClass(t.id)}
+                            onClick={() => props.onChange(t.id)}
                         >
                             <Icon name={t.id} />
                             <div>{t.value}</div>

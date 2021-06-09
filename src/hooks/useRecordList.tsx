@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 type RecordItem = {
-    id: string,
+    id: number,
     type: string,
     output: number,
     tagId: string,
@@ -9,7 +9,6 @@ type RecordItem = {
     createdAt: string
 }
 type NewRecordItem = {
-    id: string,
     type: string,
     account: string,
     tagId: string,
@@ -24,6 +23,12 @@ const useRecordList = () => {
     useEffect(() => {
         window.localStorage.setItem('recordList', JSON.stringify(record));
     }, [record]);
+    let recordId = parseInt(window.localStorage.getItem('idMax') || '0');
+    const createRecordId = () => {
+        recordId += 1;
+        window.localStorage.setItem('idMax', JSON.stringify(recordId))
+        return recordId
+    }
     const addRecord = (newRecord: NewRecordItem) => {
         if (newRecord.account === '0') {
             alert('请输入金额');
@@ -33,7 +38,7 @@ const useRecordList = () => {
             alert('请选择标签');
             return false;
         }
-        const _record = { ...newRecord, output: parseFloat(newRecord.account) };
+        const _record = { ...newRecord, output: parseFloat(newRecord.account), id: createRecordId() };
         setRecord([...record, _record]);
         return true;
     };

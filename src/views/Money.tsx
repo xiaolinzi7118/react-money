@@ -15,7 +15,6 @@ const MyLayout = styled(NavLayout)`
   justify-content: space-between;
 `
 const defaultRecord = {
-    id: '0',
     type: 'out',
     account: '0',
     tagId: '',
@@ -29,7 +28,6 @@ function Money() {
         setRecord({ ...record, ...obj })
     }
     const onSubmit = () => {
-        setRecord({ ...record, id: Math.random().toString(16).slice(2) })
         if (addRecord(record)) {
             alert('保存成功')
             setRecord(defaultRecord)
