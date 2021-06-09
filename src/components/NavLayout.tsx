@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom"
 import styled from "styled-components";
+import Icon from "./Icons";
 
 const Nav = styled.nav`
-  line-height: 24px;
+  line-height: 14px;
   box-shadow: 0 0 3px rgba(0,0,0,0.25);
  >ul{
    display:flex;
@@ -17,8 +18,8 @@ const Nav = styled.nav`
         justify-content: center;
         align-items: center;
         .icon {
-          width: 24px;      
-          height: 24px;
+          width: 32px;      
+          height: 32px;
         }
         &.selected{
             color:#ff6c6f;
@@ -49,16 +50,19 @@ const NavLayout = (props: any) => {
                 <ul>
                     <li>
                         <NavLink to="/money" activeClassName='selected'>
+                            <Icon name="1" />
                             记账
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to="/details" activeClassName='selected'>
+                            <Icon name="2" />
                             统计
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to="/reportForms" activeClassName='selected'>
+                            <Icon name="3" />
                             报表
                         </NavLink>
                     </li>
