@@ -4,6 +4,7 @@ import { Type } from 'views/Money/Type'
 import { Account } from "./Money/Account"
 import { PickDate } from "./Money/PickDate"
 import { Tags } from "./Money/Tags"
+import { Note } from './Money/Note'
 
 
 const defaultRecord = {
@@ -25,6 +26,7 @@ function Money() {
             <Account value={record.account} type={record.type} />
             <Tags value={record.type} tagId={record.tagId} onChange={(tagId) => onChange({ tagId })} />
             <PickDate onChange={(createdAt) => onChange({ createdAt })} />
+            <Note value={record.note} onChange={(note) => onChange({ note })} />
         </NavLayout>
     )
 }
