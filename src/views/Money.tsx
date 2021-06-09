@@ -8,6 +8,7 @@ import { Note } from './Money/Note'
 import { NumberPad } from "./Money/NumberPad"
 import styled from "styled-components"
 import { useRecordList } from "hooks/useRecordList"
+import { Toast } from "antd-mobile"
 
 const MyLayout = styled(NavLayout)`
   display:flex;
@@ -29,7 +30,7 @@ function Money() {
     }
     const onSubmit = () => {
         if (addRecord(record)) {
-            alert('保存成功')
+            Toast.success('保存成功', 1.5);
             setRecord(defaultRecord)
         }
     }

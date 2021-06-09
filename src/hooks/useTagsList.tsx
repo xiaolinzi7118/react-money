@@ -4,7 +4,7 @@ const defaultTagList1 = [
     { id: '4', type: 'out', value: '餐费' },
     { id: '5', type: 'out', value: '早餐' },
     { id: '6', type: 'out', value: '午餐' },
-    { id: '7', type: 'out', value: '晚费' },
+    { id: '7', type: 'out', value: '晚餐' },
     { id: '8', type: 'out', value: '零食' },
     { id: '9', type: 'out', value: '水果' },
     { id: '10', type: 'out', value: '买菜' },

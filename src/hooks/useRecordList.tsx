@@ -1,3 +1,4 @@
+import { Toast } from "antd-mobile"
 import { useEffect, useState } from "react"
 
 type RecordItem = {
@@ -31,11 +32,11 @@ const useRecordList = () => {
     }
     const addRecord = (newRecord: NewRecordItem) => {
         if (newRecord.account === '0') {
-            alert('请输入金额');
+            Toast.fail('请输入金额', 1.5)
             return false;
         }
         if (newRecord.tagId === '') {
-            alert('请选择标签');
+            Toast.fail('请选择标签', 1.5)
             return false;
         }
         const _record = { ...newRecord, output: parseFloat(newRecord.account), id: createRecordId() };
