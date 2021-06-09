@@ -25,7 +25,7 @@ const PickDate: React.FC<Props> = (props) => {
     })
     const onChangeDate = (createdAt: Date) => {
         setState({ ...state, date: createdAt })
-        props.onChange(createdAt.toDateString())
+        props.onChange(createdAt.toISOString())
     }
     return (
         <List className="date-picker-list" style={{ backgroundColor: 'white' }}>
