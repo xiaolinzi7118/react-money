@@ -10,14 +10,14 @@ const alter_config = () => (config, env) => {
                 { loader: 'svg-sprite-loader', options: {} },
                 {
                     loader: 'svgo-loader', options: {
-                        plugins: extendDefaultPlugins([
-                            {
-                                name: 'removeAttrs',
-                                params: {
-                                    attrs: 'fill'
-                                }
-                            }
-                        ])
+                        // plugins: extendDefaultPlugins([
+                        //     {
+                        //         name: 'removeAttrs',
+                        //         params: {
+                        //             attrs: 'fill'
+                        //         }
+                        //     }
+                        // ])
                     }
                 }
             ]

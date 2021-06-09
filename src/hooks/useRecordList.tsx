@@ -2,7 +2,7 @@ type RecordItem = {
     id: string,
     type: 'out' | 'in',
     account: number,
-    tagId: number,
+    tagId: '',
     note: string,
     createdAt: string
 }
