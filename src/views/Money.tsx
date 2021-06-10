@@ -20,7 +20,7 @@ const defaultRecord = {
     account: '0',
     tagId: '',
     note: '',
-    createdAt: ''
+    createdAt: (new Date()).toISOString()
 }
 function Money() {
     const [record, setRecord] = useState(defaultRecord)
