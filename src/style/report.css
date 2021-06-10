@@ -1,0 +1,39 @@
+.statistics {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.statistics .year {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(213, 126, 231, 1) 0%,
+      rgba(255, 107, 108, 1) 100%
+    );
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+.statistics .footer {
+    margin-top: 20px;
+    padding: 8px 10px;
+    text-align: center;
+    color: white;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(213, 126, 231, 1) 0%,
+      rgba(255, 107, 108, 1) 100%
+    );
+    border-radius: 10px;
+  }
+.statistics .echarts_wrap {
+    display: flex;
+    justify-content: center;
+}
+.echarts_wrap .echarts-report {
+  width: 300px;
+  height: 300px;
+}
