@@ -16,7 +16,7 @@ const MyLayout = styled(NavLayout)`
   justify-content: space-between;
 `
 const defaultRecord = {
-    type: 'out',
+    type: '-',
     account: '0',
     tagId: '',
     note: '',

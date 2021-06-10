@@ -1,0 +1,15 @@
+.am-list-item .am-list-line .am-list-content{
+    font-size: 14px;
+}
+.am-list-item .am-list-line .am-list-extra{
+    font-size: 14px;
+    color: inherit;
+}
+.am-picker-popup{
+    border-radius: 16px;
+    height: 50vh;
+
+}
+.am-picker-popup-item{
+    color: inherit;
+}

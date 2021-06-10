@@ -19,22 +19,22 @@ align-items: center;
 `
 
 type Props = {
-    value: string;
-    onChange: (value: string) => void
+	value: string;
+	onChange: (value: string) => void
 }
 const Note: React.FC<Props> = (props) => {
-    const note = props.value
-    return (
-        <Wrapper>
-            <Label>
-                <span>备注</span>
-                <input
-                    type='text'
-                    placeholder='在这里输入备注'
-                    value={note}
-                    onChange={(e) => props.onChange(e.target.value)} />
-            </Label>
-        </Wrapper>
-    )
+	const note = props.value
+	return (
+		<Wrapper>
+			<Label>
+				<span>备注</span>
+				<input
+					type='text'
+					placeholder='在这里输入备注'
+					value={note}
+					onChange={(e) => props.onChange(e.target.value)} />
+			</Label>
+		</Wrapper>
+	)
 }
 export { Note }

@@ -49,7 +49,7 @@ const Tags: React.FC<Props> = (props) => {
     return (
         <Wrapper>
             <ul className='tags'>
-                {type === 'out' ?
+                {type === '-' ?
                     tagList1.map(t =>
                         <li key={t.id} className={getClass(t.id)}
                             onClick={() => props.onChange(t.id)}

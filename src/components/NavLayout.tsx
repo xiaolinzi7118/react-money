@@ -57,7 +57,7 @@ const NavLayout = (props: any) => {
                     <li>
                         <NavLink to="/details" activeClassName='selected'>
                             <Icon name="2" />
-                            统计
+                            流水
                         </NavLink>
                     </li>
                     <li>

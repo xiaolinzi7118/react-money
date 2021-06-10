@@ -22,11 +22,11 @@ const defaultTagList2 = [
     { id: '20', type: 'in', value: '理财' },
     { id: '21', type: 'in', value: '投资' },
     { id: '22', type: 'in', value: '礼金' },
-    { id: '13', type: 'in', value: '其他' }
+    { id: '23', type: 'in', value: '其他' }
 ];
 const useTagList = () => {
-    const [tagList1, setTagList1] = useState(defaultTagList1);
-    const [tagList2, setTagList2] = useState(defaultTagList2);
+    const [tagList1] = useState(defaultTagList1);
+    const [tagList2] = useState(defaultTagList2);
     return { tagList1, tagList2 }
 }
 export { useTagList }

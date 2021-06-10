@@ -1,6 +1,7 @@
 import { DatePicker, List } from 'antd-mobile';
-import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
+// import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 import { useState } from 'react';
+import 'style/pickDate.css'
 
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);

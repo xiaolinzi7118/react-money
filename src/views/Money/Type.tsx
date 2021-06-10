@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import styled from "styled-components"
 import classNames from "classnames"
 
@@ -32,29 +32,25 @@ const Wrapper = styled.div`
   }
 `
 type Props = {
-    value: string,
-    onChange: (value: 'out' | 'in') => void
+  value: string,
+  onChange: (value: '-' | '+') => void
 }
 const Type: React.FC<Props> = (props) => {
-    const { value } = props
-    const [type, setType] = useState(value)
-    const onClickChange = (t: 'out' | 'in') => {
-        setType(t)
-        props.onChange(t)
-    }
-    return (
-        <Wrapper>
-            <ul className='types'>
-                <li className={classNames('out', { 'selected': type === 'out' })}
-                    onClick={() => onClickChange('out')}>
-                    支出
+  const { value } = props
+  const getClass = (t: string) => t === value ? 'selected' : ''
+  return (
+    <Wrapper>
+      <ul className='types'>
+        <li className={classNames('out', getClass('-'))}
+          onClick={() => props.onChange('-')}>
+          支出
                 </li>
-                <li className={classNames('in', { 'selected': type === 'in' })}
-                    onClick={() => onClickChange('in')}>
-                    收入
-                </li>
-            </ul>
-        </Wrapper>
-    )
+        <li className={classNames('in', getClass('+'))}
+          onClick={() => props.onChange('+')}>
+          收入
+        </li>
+      </ul>
+    </Wrapper>
+  )
 }
 export { Type }
