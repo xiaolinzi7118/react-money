@@ -5,8 +5,7 @@ import { useTagList } from "hooks/useTagsList";
 import Icon from "components/Icons";
 import 'style/details.css'
 import day from 'dayjs'
-import { useEffect, useRef, useState } from "react";
-import classNames from "classnames";
+import { useState } from "react";
 
 type RecordItem = {
     id: number,
@@ -22,7 +21,6 @@ function Details() {
     const tagList = tagList1.concat(tagList2)
     const tagName = (tagId: string) => tagList.filter(t => t.id === tagId)[0]
     const [month, setMonth] = useState(day(new Date()).month() + 1)
-    const [isFixed, setIsFixed] = useState(false)
     const lessMonth = () => {
         if (month > 1) {
             setMonth(month - 1)

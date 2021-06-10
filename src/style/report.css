@@ -33,7 +33,7 @@
     display: flex;
     justify-content: center;
 }
-.echarts_wrap .echarts-report {
+.echarts_wrap .echarts-report{
   width: 300px;
   height: 300px;
 }
