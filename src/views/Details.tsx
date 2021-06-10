@@ -1,5 +1,5 @@
 import NavLayout from "components/NavLayout"
-import { Button, List } from 'antd-mobile';
+import { Button } from 'antd-mobile';
 import { useRecordList } from "hooks/useRecordList";
 import { useTagList } from "hooks/useTagsList";
 import Icon from "components/Icons";
@@ -16,7 +16,6 @@ type RecordItem = {
     createdAt: string
 }
 function Details() {
-    const Item = List.Item;
     const { record } = useRecordList();
     const { tagList1, tagList2 } = useTagList();
     const tagList = tagList1.concat(tagList2)
@@ -59,6 +58,13 @@ function Details() {
             }, 0)
         return a
     }
+    const getClass = (type: string) => {
+        if (type === '-') {
+            return 'out'
+        } else {
+            return 'in'
+        }
+    }
     return (
         <NavLayout>
             <div className='selectedMonth'>
@@ -75,19 +81,20 @@ function Details() {
                         <li>结余：{getTotal('+') - getTotal('-')}</li>
                     </ul>
                     {getNewList().map(list =>
-                        <div key={list.date}>
+                        <div key={list.date} className='detail-ul'>
                             {day(list.date).format('M月DD日')}
-                            {list.list.map(r =>
-                                <List className="my-list" key={r.id}>
-                                    <Item extra={r.type + r.output}>
+                            <ul className='detail-list'>
+                                {list.list.map(r =>
+                                    <li key={r.id}>
                                         <div className='tags'>
                                             <div><Icon name={tagName(r.tagId).id} /></div>
                                             <div>{tagName(r.tagId).value}</div>
                                         </div>
                                         <div className='oneLine'>{r.note}</div>
-                                    </Item>
-                                </List>
-                            )}
+                                        <div className={getClass(r.type)}>{r.type + r.output}</div>
+                                    </li>
+                                )}
+                            </ul>
                         </div>
                     )}
                 </div>

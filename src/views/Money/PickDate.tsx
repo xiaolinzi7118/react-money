@@ -1,5 +1,4 @@
 import { DatePicker, List } from 'antd-mobile';
-// import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 import { useState } from 'react';
 import 'style/pickDate.css'
 
@@ -7,11 +6,6 @@ const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
 const utcNow = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
 
-// let minDate = new Date(nowTimeStamp - 1e7);
-// const maxDate = new Date(nowTimeStamp + 1e7);
-// if (minDate.getDate() !== maxDate.getDate()) {
-//     minDate = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
-// }
 type Props = {
     onChange: (createdAt: string) => void
 }
@@ -33,7 +27,7 @@ const PickDate: React.FC<Props> = (props) => {
             <DatePicker
                 mode="date"
                 title="选择年月日"
-                minDate={new Date(2020, 0, 1)}
+                minDate={new Date(2021, 0, 1)}
                 maxDate={new Date(2021, 11, 31)}
                 extra="Optional"
                 value={state.date}
