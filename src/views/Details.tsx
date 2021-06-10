@@ -5,7 +5,8 @@ import { useTagList } from "hooks/useTagsList";
 import Icon from "components/Icons";
 import 'style/details.css'
 import day from 'dayjs'
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import classNames from "classnames";
 
 type RecordItem = {
     id: number,
@@ -21,6 +22,7 @@ function Details() {
     const tagList = tagList1.concat(tagList2)
     const tagName = (tagId: string) => tagList.filter(t => t.id === tagId)[0]
     const [month, setMonth] = useState(day(new Date()).month() + 1)
+    const [isFixed, setIsFixed] = useState(false)
     const lessMonth = () => {
         if (month > 1) {
             setMonth(month - 1)
@@ -31,6 +33,7 @@ function Details() {
             setMonth(month + 1)
         }
     }
+    //获取对应月份渲染的数据
     const getNewList = () => {
         const allDays = Array.from(new Set(record.map(r => r.createdAt))).sort((a: any, b: any) => {
             const aa = day(a).format('DD');
@@ -46,6 +49,7 @@ function Details() {
         });
         return newList.filter((n) => day(n.date).month() + 1 === month)
     }
+    //根据支出收入类型来计算
     const getTotal = (type: string) => {
         const totalList = getNewList()
         const a = totalList.reduce((total, val) => {
@@ -67,39 +71,44 @@ function Details() {
     }
     return (
         <NavLayout>
-            <div className='selectedMonth'>
-                <Button type="ghost" size="small" inline className='btn' onClick={lessMonth}>上个月</Button>
-                <div className='month'>{month} 月支出</div>
-                <Button type="ghost" size="small" inline className='btn' onClick={moreMonth}>下个月</Button>
-            </div>
-            {getNewList().length === 0
-                ? <div>当前没有数据哦</div>
-                : <div>
+            <div>
+                <div className='fixed'>
+                    <div className='selectedMonth'>
+                        <Button type="ghost" size="small" inline className='btn' onClick={lessMonth}>上个月</Button>
+                        <div className='month'>{month} 月支出</div>
+                        <Button type="ghost" size="small" inline className='btn' onClick={moreMonth}>下个月</Button>
+                    </div>
                     <ul className="detail-count">
                         <li>收入：{getTotal('+')}</li>
                         <li>支出：{getTotal('-')}</li>
                         <li>结余：{getTotal('+') - getTotal('-')}</li>
                     </ul>
-                    {getNewList().map(list =>
-                        <div key={list.date} className='detail-ul'>
-                            {day(list.date).format('M月DD日')}
-                            <ul className='detail-list'>
-                                {list.list.map(r =>
-                                    <li key={r.id}>
-                                        <div className='tags'>
-                                            <div><Icon name={tagName(r.tagId).id} /></div>
-                                            <div>{tagName(r.tagId).value}</div>
-                                        </div>
-                                        <div className='oneLine'>{r.note}</div>
-                                        <div className={getClass(r.type)}>{r.type + r.output}</div>
-                                    </li>
-                                )}
-                            </ul>
-                        </div>
-                    )}
                 </div>
-            }
-        </NavLayout>
+                {
+                    getNewList().length === 0
+                        ? <div>当前没有数据哦</div>
+                        : <div>
+                            {getNewList().map(list =>
+                                <div key={list.date} className='detail-ul'>
+                                    {day(list.date).format('M月DD日')}
+                                    <ul className='detail-list'>
+                                        {list.list.map(r =>
+                                            <li key={r.id}>
+                                                <div className='tags'>
+                                                    <div><Icon name={tagName(r.tagId).id} /></div>
+                                                    <div>{tagName(r.tagId).value}</div>
+                                                </div>
+                                                <div className='oneLine'>{r.note}</div>
+                                                <div className={getClass(r.type)}>{r.type + r.output}</div>
+                                            </li>
+                                        )}
+                                    </ul>
+                                </div>
+                            )}
+                        </div>
+                }
+            </div>
+        </NavLayout >
     )
 }
 export default Details

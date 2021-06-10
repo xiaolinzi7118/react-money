@@ -1,6 +1,7 @@
 import { DatePicker, List } from 'antd-mobile';
 import { useState } from 'react';
 import 'style/pickDate.css'
+import day from 'dayjs'
 
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
@@ -22,13 +23,14 @@ const PickDate: React.FC<Props> = (props) => {
         setState({ ...state, date: createdAt })
         props.onChange(createdAt.toISOString())
     }
+    const currentYear = day(new Date()).year()
     return (
         <List className="date-picker-list" style={{ backgroundColor: 'white' }}>
             <DatePicker
                 mode="date"
                 title="选择年月日"
-                minDate={new Date(2021, 0, 1)}
-                maxDate={new Date(2021, 11, 31)}
+                minDate={new Date(currentYear, 0, 1)}
+                maxDate={new Date(currentYear, 11, 31)}
                 extra="Optional"
                 value={state.date}
                 onChange={date => onChangeDate(date)}

@@ -6,7 +6,7 @@ const Wrapper = styled.div`
     font-size: 36px;
     padding: 9px 16px;
     text-align: right;
-    height: 72px;
+    height: 52px;
     &.out {
         color: green;
       }
@@ -16,17 +16,17 @@ const Wrapper = styled.div`
   }
 `
 type Props = {
-	value: string,
-	type: string
+  value: string,
+  type: string
 }
 const Account: React.FC<Props> = (props) => {
-	const { value, type } = props
-	return (
-		<Wrapper>
-			<div className={classNames('count', { 'out': type === '-' }, { 'in': type === '+' })}>
-				{value}
-			</div>
-		</Wrapper>
-	)
+  const { value, type } = props
+  return (
+    <Wrapper>
+      <div className={classNames('count', { 'out': type === '-' }, { 'in': type === '+' })}>
+        {value}
+      </div>
+    </Wrapper>
+  )
 }
 export { Account }
