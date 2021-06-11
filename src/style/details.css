@@ -2,6 +2,7 @@
     position: fixed;
     top: 0;
     width: 100%;
+    max-width: 500px;
 }
 .selectedMonth {
     display: flex;
@@ -19,6 +20,8 @@
 }
 .am-button.btn.am-button-ghost.am-button-small.am-button-inline{
     margin-top: 7px;
+    border-radius: 32px;
+    border-color: white;
 }
 .am-button.btn.am-button-ghost.am-button-small.am-button-inline::before{
     border-radius: 32px;
