@@ -33,6 +33,34 @@
     padding: 0 10px;
     text-align: center;
 }
+.detail-container{
+    padding-top: 96px;
+}
+.detail-notFound {
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    text-align: center;
+}
+.detail-notFound .icon{
+    width: 10em;
+    height: 10em;
+    margin: 0 auto;
+}
+.detail-notFound .toMoney {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(213, 126, 231, 1) 0%,
+      rgba(255, 107, 108, 1) 100%
+    );
+    border-radius: 2rem;
+    border: 1px solid red;
+    margin-top: 2rem;
+    padding: 1em 2em;
+    color: white;
+}
 .detail-count {
     color: white;
     background: rgb(2, 0, 36);

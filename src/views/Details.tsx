@@ -6,6 +6,7 @@ import Icon from "components/Icons";
 import 'style/details.css'
 import day from 'dayjs'
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 type RecordItem = {
     id: number,
@@ -82,29 +83,37 @@ function Details() {
                         <li>结余：{getTotal('+') - getTotal('-')}</li>
                     </ul>
                 </div>
-                {
-                    getNewList().length === 0
-                        ? <div>当前没有数据哦</div>
-                        : <div>
-                            {getNewList().map(list =>
-                                <div key={list.date} className='detail-ul'>
-                                    {day(list.date).format('M月DD日')}
-                                    <ul className='detail-list'>
-                                        {list.list.map(r =>
-                                            <li key={r.id}>
-                                                <div className='tags'>
-                                                    <div><Icon name={tagName(r.tagId).id} /></div>
-                                                    <div>{tagName(r.tagId).value}</div>
-                                                </div>
-                                                <div className='oneLine'>{r.note}</div>
-                                                <div className={getClass(r.type)}>{r.type + r.output}</div>
-                                            </li>
-                                        )}
-                                    </ul>
-                                </div>
-                            )}
-                        </div>
-                }
+                <div className='detail-container'>
+                    {
+                        getNewList().length === 0
+                            ? <div className='detail-notFound'>
+                                <Icon name='none' />
+                                当前没有数据哦~
+                                <NavLink to='/money' className='toMoney'>
+                                    记一笔
+                                </NavLink>
+                            </div>
+                            : <div>
+                                {getNewList().map(list =>
+                                    <div key={list.date} className='detail-ul'>
+                                        {day(list.date).format('M月DD日')}
+                                        <ul className='detail-list'>
+                                            {list.list.map(r =>
+                                                <li key={r.id}>
+                                                    <div className='tags'>
+                                                        <div><Icon name={tagName(r.tagId).id} /></div>
+                                                        <div>{tagName(r.tagId).value}</div>
+                                                    </div>
+                                                    <div className='oneLine'>{r.note}</div>
+                                                    <div className={getClass(r.type)}>{r.type + r.output}</div>
+                                                </li>
+                                            )}
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+                    }
+                </div>
             </div>
         </NavLayout >
     )
