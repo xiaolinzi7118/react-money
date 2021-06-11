@@ -2,6 +2,7 @@
   "name": "my-money2",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://xiaolinzi7118.github.io/react-money-website/",
   "dependencies": {
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
@@ -90,7 +91,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "sh scripts/deploy.sh"
   },
   "eslintConfig": {
     "extends": [
